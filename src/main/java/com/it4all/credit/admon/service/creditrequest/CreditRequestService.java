@@ -437,17 +437,17 @@ private TokenService tokenService;
 		ResponseServiceDTO response = new ResponseServiceDTO();
 		List<CreditRequest> creditrequestList = new ArrayList<>();
 		try {
-        for (Long id : idList) {
-        	CreditRequest creditrequest = repository.findById(id).get();
-        	creditrequestList.add(creditrequest);
-        	repository.deleteById(id);
-        }
-		String userName = tokenService.getAuthenticatedUsername();
-        auditoryService.delete(creditrequestList, userName);
-		response.setObject(null);
-		response.setSuccess(true);
-		response.setCodeResponse(this.baseCodeResponse.getDescription(IT4ALL_TRANSACCION_SUCCESS_CODE));
-		response.setDescriptionResponse(
+	        for (Long id : idList) {
+	        	CreditRequest creditrequest = repository.findById(id).get();
+	        	creditrequestList.add(creditrequest);
+	        	repository.deleteById(id);
+	        }
+			String userName = tokenService.getAuthenticatedUsername();
+	        auditoryService.delete(creditrequestList, userName);
+			response.setObject(null);
+			response.setSuccess(true);
+			response.setCodeResponse(this.baseCodeResponse.getDescription(IT4ALL_TRANSACCION_SUCCESS_CODE));
+			response.setDescriptionResponse(
 				this.baseCodeResponse.getDescription(IT4ALL_TRANSACCION_SUCCESS_DESCRIPTION));
 		} catch (DataAccessException e) {
 			response.setObject(null);

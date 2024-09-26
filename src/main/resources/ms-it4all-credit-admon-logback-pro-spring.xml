@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
     <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
-    <property name="LOG_FILE" value="C:/it4all/generator/logs/data/ms.it4all.ticket.admon.log"/>
+    <property name="LOG_FILE" value="/home/it4all/generator/admon/logs/data/ms.it4all.credit.admon.log"/>
 
     <appender name="FILE-ROLLING" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${LOG_FILE}</file>
 
         <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
-            <fileNamePattern>C:/it4all/generator/logs/data/archivados/ms.it4all.ticket.admon.log.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <fileNamePattern>/home/it4all/generator/admon/logs/archivados/ms.it4all.credit.admon.log.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
             <!-- each archived file, size max 5KB -->
             <maxFileSize>1000KB</maxFileSize>
             <!-- total size of all archive files, if total size > 20KB,
