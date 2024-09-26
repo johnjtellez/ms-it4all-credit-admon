@@ -1,0 +1,72 @@
+server:
+  port: 6443
+  ssl:
+   enabled: false
+   key-store: C:/it4all/deploy/back/seg4all.p12
+   key-store-password: Seg4all2023!
+   keyStoreType: PKCS12
+   keyAlias: seg4all  
+spring:
+  application:
+    name: ms-it4all-credit
+  #data:
+    #rest:
+      #base-path: /api
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          #issuer-uri: http://localhost:8080/realms/it4alltest
+          issuer-uri: https://keycloak.it4all.co:7443/realms/SEG4ALL
+          jwk-set-uri: ${spring.security.oauth2.resourceserver.jwt.issuer-uri}/protocol/openid-connect/certs
+  datasource:
+    hikari:
+      connection-timeout: 300000
+      maximum-pool-size: 5
+#    Configuracion inicial tangibles
+#    password: uKl-LZ3oQlcv9psKmzT1W5YN7TNkNBAF
+#    url: jdbc:postgresql://drona.db.elephantsql.com:5432/hzpuncll 
+#    username: hzpuncll
+#    Configuracion generador credits - eventos
+#    password: Y2V_QZNcaz-gf3Z0C15Q1u1ZJ6bO8Qyx
+#    url: jdbc:postgresql://stampy.db.elephantsql.com:5432/jotkladm 
+#    username: jotkladm
+    password: it4all2024*
+    url: jdbc:postgresql://104.197.37.241:5432/creditos
+    username: postgres
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        show_sql: false
+        format_sql: false
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+jwt:
+  auth:
+    converter:
+      resource-id: frontend
+      principal-attribute: principal_username
+logging:
+  config: C:/it4all/config/ms-it4all-credit-admon-logback-dev-spring.xml
+  logging:
+  level:
+    root: INFO
+           
+it4all:
+  ruta:
+    generacion: C:/it4all/generator
+  extensionarchivo: java
+  extensionangularclass: ts
+  extensionangularform: html
+  extensionangularcss: scss
+  package:
+    entity: .model
+    repository: .model.repository
+    mapper: .mapper
+    controller: .controller
+    services: .service
+    report: 
+      base: com.it4all.report.admon
+  microservicesName: /ms-it4all
+  folderpathrules: src/main/resources/rules/

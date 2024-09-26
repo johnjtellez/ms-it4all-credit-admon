@@ -1,0 +1,11 @@
+package rules;
+
+global java.util.List resultList;
+
+dialect "mvel"
+
+rule "Dummy rule"
+    when
+
+    then
+end
